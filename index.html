@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Bridge-05</title>
+        <link rel="stylesheet" href="./styles.css"/>
+        <script src="./feather.min.js"></script>
+        <script src="./gsap.min.js"></script>
+    </head>
+    <body>
+        <div class="wrapper">
+            <!-- OVERLAY 
+        =========================================-->
+            <div class="overlay">
+                <div class="block b1"></div>
+                <div class="block b2"></div>
+                <div class="block b3"></div>
+                <div class="block b4"></div>
+                <div class="block b5"></div>
+            </div>
+
+            <!-- STRIPS
+        ========================================= -->
+            <div class="strips">
+                <div class="strip one"></div>
+                <div class="strip two"></div>
+                <div class="strip three"></div>
+                <div class="strip four"></div>
+            </div>
+
+            <!-- LOGO
+        ========================================== -->
+            <div class="logo">
+                Bridge - 05
+            </div>
+
+            <!--INFO
+        ==========================================-->
+            <div class="info">
+                <a href="#" class="desc">way to heaven</a>
+                <div class="name">Paradise Bridge</div>
+            </div>
+
+            <!-- TOPNAV
+        ===================================== -->
+            <div class="navbar">
+
+                <div class="language">
+                    <span>en</span>
+                    <i data-feather="chevron-down"></i>
+                </div>
+
+                <div class="search">
+                    <i data-feather="search"></i>
+                </div>
+
+                <div class="menu">
+                    <i data-feather="menu"></i>
+                </div>
+
+            </div>
+
+            <!--CONTACT
+        =========================================-->
+            <div class="contact">
+                <div>luutienphat@gmail.com</div>
+                <div>+84 123456789</div>
+            </div>
+
+            <!-- MEDIA
+        ========================================== -->
+            <div class="media">
+                <a href="#">facebook</a>
+                <a href="#">twitter</a>
+                <a href="#">instagram</a>
+            </div>
+
+            <!-- BOTTOM-NAV
+        ========================================== -->
+            <div class="bottom-nav">
+                <div class="button left">
+                    <i data-feather="chevron-left"></i>
+                </div>
+                <div class="button right">
+                    <i data-feather="chevron-right"></i>
+                </div>
+            </div>
+
+        </div>
+        <script>
+            feather.replace()
+        </script>
+        <script src="./gsap.js"></script>
+        <script>
+            const leftButton = document.querySelector(".left");
+            const rightButton = document.querySelector(".right");
+            const body = document.querySelector("body");
+
+            const imageArr = ["1.jpg", "2.jpg"];
+            let current = imageArr[1];
+
+            let blockAnimation = gsap
+                .timeline({paused: true})
+                .to(".b2, .b3, .b4", {
+                    duration: 1,
+                    width: "26.66666667%",
+                    ease: "expo.inOut",
+                })
+                .to(".b2, .b3, .b4", {
+                    delay: 1,
+                    duration: 1,
+                    width: "0%",
+                    ease: "expo.inOut",
+                }, "<")
+                .to(".b1, .b5", {
+                    duration: 1,
+                    width: "10%",
+                    ease: "expo.inOut",
+                }, "-=2")
+                .to(".b1, .b5", {
+                    delay: 1,
+                    duration: 1,
+                    width: "0%",
+                    ease: "expo.inOut",
+                }, "<");
+
+            
+
+            rightButton.addEventListener('click', () => {
+                if (imageArr.indexOf(current) === (imageArr.length - 1)) {
+                    current = imageArr[0];
+                } else {
+                    current = imageArr[imageArr.indexOf(current) + 1]
+                }
+                setTimeout(() => {
+                    body.style.backgroundImage = `url(./${current})`;
+                },1000)
+                
+                blockAnimation.restart();
+            })
+
+            leftButton.addEventListener('click', () => {
+                if (imageArr.indexOf(current) === 0) {
+                    current = imageArr[imageArr.length - 1];
+                } else {
+                    current = imageArr[imageArr.indexOf(current) - 1]
+                }
+
+                setTimeout(() => {
+                    body.style.backgroundImage = `url(./${current})`;
+                },1000)
+                
+                blockAnimation.restart();
+            })
+        </script>
+    </body>
+</html>
