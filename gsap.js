@@ -50,7 +50,7 @@ gsap
 
 //  NAVBAR ===============================
 gsap
-    .timeline({delay: 3})
+    .timeline({delay: 2.8})
     .from(".navbar .language, .navbar .search, .navbar .menu", {
         duration: 0.9,
         stagger: 0.3,
@@ -61,7 +61,7 @@ gsap
 
 // MEDIA =======================================
 gsap
-    .timeline({delay: 3})
+    .timeline({delay: 2.8})
     .from(".media", {
         duration: 1,
         x: 20,
@@ -71,7 +71,7 @@ gsap
 
 // BOTTOM-NAV ====================================
 gsap
-    .timeline({delay: 3})
+    .timeline({delay: 2.8})
     .from(".bottom-nav .button", {
         duration: 1,
         stagger: 0.5,
